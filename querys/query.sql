@@ -42,7 +42,20 @@ INSERT INTO Hoteles (Nombre,Ubicacion, Clasificacion, AdministradorID)VALUES
 ("hotel playa","playa del carmen",4, 1 ),
 ("hotel Montaña","ciudad Mexico",5, 2)
 
+INSERT INTO Habitaciones (HotelID, NumeroHabitacion, Disponibilidad, Clasificacion) VALUES(1,"101", TRUE, "Deluxe"), (1,"102",FALSE,"Standard"), (2,"201", TRUE, "Suite"), (2, "202", TRUE, "Standard");
+INSERT INTO Servicios (Nombre, Costo, HotelID) VALUES ("WiFi", 10.00,1), ("Desayuno incluido", 25.00, 2);
+INSERT INTO Reservas (CedulaID, HabitacionID, FechaInicio, FechaFin) VALUES (1, 1, "2024-09-01", "2024-09-05"), (2, 3, "2024-10-10", "2024-10-15");
 
 
+
+SELECT * FROM Usuarios
+
+SELECT * FROM Administradores
 
 SELECT * FROM Hoteles
+
+SELECT * FROM Habitaciones
+
+SELECT * FROM Servicios
+
+SELECT * FROM Reservas
