@@ -29,4 +29,20 @@ create TABLE Habitaciones (HabitacionID INT PRIMARY KEY AUTO_INCREMENT, HotelID 
 create TABLE Servicios (ServicioID INT PRIMARY KEY AUTO_INCREMENT, Nombre VARCHAR(100) NOT NULL, Costo DECIMAL(10, 2), HotelID INT, FOREIGN KEY (HotelID) REFERENCES Hoteles(HotelID))
 
 create TABLE Reservas (ReservaID INT PRIMARY KEY AUTO_INCREMENT, CedulaID INT, HabitacionID INT, FechaInicio DATE NOT NULL, FechaFin DATE NOT NULL, FOREIGN KEY (CedulaID) REFERENCES Usuarios(CedulaID), FOREIGN KEY (HabitacionID) REFERENCES Habitaciones(HabitacionID));
+INSERT INTO Administradores (Nombre, Correo) VALUES
+("juan perez", "juan@gmail.com"),
+("anita biliber", "anitab@gmail.com"); 
+INSERT INTO Usuarios (Nombre, Correo) VALUES
+("carlos gomez", "carlos@gmail.com"),
+("laurita gomez","laura.m@gmail.com");
 
+ALTER TABLE Hoteles ADD COLUMN Ubicacion VARCHAR(100) NOT NULL 
+
+INSERT INTO Hoteles (Nombre,Ubicacion, Clasificacion, AdministradorID)VALUES
+("hotel playa","playa del carmen",4, 1 ),
+("hotel Montaña","ciudad Mexico",5, 2)
+
+
+
+
+SELECT * FROM Hoteles
