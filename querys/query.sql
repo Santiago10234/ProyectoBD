@@ -73,6 +73,29 @@ END;
 CALL AgregarReserva(1, 1, "2024-09-01", "2024-09-05");
 CALL AgregarReserva(2, 3, "2024-11-10", "2024-11-15");
 
+CREATE PROCEDURE ConsultarDisponibilidad(
+
+IN p_HotelID INT,
+IN p_FechaInicio DATE,
+IN p_FechaFin DATE
+)
+BEGIN
+ SELECT h.HabitacionID,h.NumeroHabitacion,h.Disponibilidad,
+h.Clasificacion
+  FROM Habitaciones h
+  LEFT JOIN Reservas r
+  ON h.HabitacionID = r.HabitacionID
+  AND (
+    (r.FechaInicio <= p_FechaFin AND r.FechaFin >= p_FechaInicio)
+  )
+  WHERE h.HotelID = p_HotelID
+  AND(r.ReservaID IS NULL OR (r.FechaFin < p_FechaInicio OR r.FechaInicio > p_FechaFin));
+  END
+
+  CALL ConsultarDisponibilidad(1,"2024-09-01", "2024-09-10");
+
+
+
 
 SELECT * FROM Usuarios
 
