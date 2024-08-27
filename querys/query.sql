@@ -72,6 +72,7 @@ END;
 
 CALL AgregarReserva(1, 1, "2024-09-01", "2024-09-05");
 CALL AgregarReserva(2, 3, "2024-11-10", "2024-11-15");
+CALL AgregarReserva(1, 1, "2024-8-27", "2024-8-31");
 
 CREATE PROCEDURE ConsultarDisponibilidad(
 
@@ -93,6 +94,8 @@ h.Clasificacion
   END
 
   CALL ConsultarDisponibilidad(1,"2024-09-01", "2024-09-10");
+
+
 
 
 SELECT * FROM Usuarios
