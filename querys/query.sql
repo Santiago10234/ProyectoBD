@@ -72,6 +72,7 @@ END;
 
 CALL AgregarReserva(1, 1, "2024-09-01", "2024-09-05");
 CALL AgregarReserva(2, 3, "2024-11-10", "2024-11-15");
+CALL AgregarReserva(1, 1, "2024-8-27", "2024-8-31");
 
 CREATE PROCEDURE ConsultarDisponibilidad(
 
@@ -96,6 +97,28 @@ h.Clasificacion
 
 
 
+CREATE VIEW ReporteReservasHoy AS
+SELECT
+    r.ReservaID,
+    u.Nombre AS NombreUsuario,
+    u.Apellidos AS ApellidosUsuario,
+    h.Nombre AS NombreHotel,
+    ha.NumeroHabitacion,
+    r.FechaInicio,
+    r.FechaFin
+FROM
+    Reservas r
+JOIN
+    Usuarios u ON r.CedulaID = u.CedulaID
+JOIN
+    Habitaciones ha ON r.HabitacionID = ha.HabitacionID
+JOIN
+    Hoteles h ON ha.HotelID = h.HotelID
+WHERE
+    DATE(r.FechaInicio) = CURDATE() OR DATE(r.FechaFin) = CURDATE();
+
+
+SELECT * FROM ReporteReservasHoy
 
 SELECT * FROM Usuarios
 
