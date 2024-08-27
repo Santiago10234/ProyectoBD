@@ -95,8 +95,6 @@ h.Clasificacion
   CALL ConsultarDisponibilidad(1,"2024-09-01", "2024-09-10");
 
 
-
-
 SELECT * FROM Usuarios
 
 SELECT * FROM Administradores
