@@ -209,17 +209,3 @@ SELECT * FROM Servicios
 SELECT * FROM Reservas
 
 
-
-SELECT * FROM Usuarios
-
-SELECT * FROM Administradores
-
-SELECT * FROM Hoteles
-
-SELECT * FROM Habitaciones
-
-SELECT * FROM Servicios
-
-SELECT * FROM Reservas
-
-
