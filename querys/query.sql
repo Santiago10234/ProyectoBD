@@ -148,6 +148,7 @@ BEGIN
     );
 END;
 
+CREATE INDEX idx_ubicacion ON Hoteles(Ubicacion);
 
 SELECT * FROM ReporteReservasHoy
 
