@@ -48,6 +48,31 @@ INSERT INTO Servicios (Nombre, Costo, HotelID) VALUES ("WiFi", 10.00,1), ("Desay
 INSERT INTO Reservas (CedulaID, HabitacionID, FechaInicio, FechaFin) VALUES (1, 1, "2024-09-01", "2024-09-05"), (2, 3, "2024-10-10", "2024-10-15");
 
 
+CREATE PROCEDURE AgregarReserva (
+    IN p_CedulaID INT, 
+    IN p_HabitacionID INT, 
+    IN p_FechaInicio DATE, 
+    IN p_FechaFin DATE
+)
+BEGIN 
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Reservas
+        WHERE HabitacionID = p_HabitacionID
+        AND (
+            (FechaInicio <= p_FechaFin AND FechaFin >= p_FechaInicio)
+        )
+    ) THEN
+        INSERT INTO Reservas (CedulaID, HabitacionID, FechaInicio, FechaFin)
+        VALUES (p_CedulaID, p_HabitacionID, p_FechaInicio, p_FechaFin);
+    ELSE
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "La habitación no está disponible en las fechas seleccionadas.";
+    END IF;
+END;
+
+CALL AgregarReserva(1, 1, "2024-09-01", "2024-09-05");
+CALL AgregarReserva(2, 3, "2024-11-10", "2024-11-15");
+
 
 SELECT * FROM Usuarios
 
