@@ -43,7 +43,16 @@ INSERT INTO Hoteles (Nombre, Ubicacion, Clasificacion, AdministradorID)VALUES
 ("hotel playa","playa del carmen",4, 1 ),
 ("hotel Montaña","ciudad Mexico",5, 2)
 
+INSERT INTO Hoteles (Nombre, Ubicacion, Clasificacion, AdministradorID)VALUES
+("HotelCosta Azul", "Cancún", 4, 1),
+("Hotel Sierra Verde", "Guadalajara", 3, 2),
+("Hotel Ciudad Sol", "Monterrey", 5, 1),
+("Hotel Oasis Tropical", "Tulum", 4, 2),
+("Hotel Laguna Dorada", "Puerto Vallarta", 3, 1);
+
+
 INSERT INTO Habitaciones (HotelID, NumeroHabitacion, Disponibilidad, Clasificacion) VALUES(1,"101", TRUE, "Deluxe"), (1,"102",FALSE,"Standard"), (2,"201", TRUE, "Suite"), (2, "202", TRUE, "Standard");
+INSERT INTO Habitaciones (HotelID, NumeroHabitacion, Disponibilidad, Clasificacion) VALUES(3, "301", TRUE, "Deluxe"), (3, "302", TRUE, "Standard"), (3, "303", TRUE, "Standard"), (4, "401", TRUE, "Suite"), (4, "402", FALSE, "Standard"), (4, "403", FALSE, "Standard"), (5, "501", TRUE, "Superior"), (5, "502", TRUE, "Deluxe"), (5, "503", TRUE, "Suite"), (6, "601", TRUE, "Suite"), (6, "602", FALSE, "Standard"), (6, "603", True, "Standard"), (7, "701", TRUE, "Standard"), (7, "702", TRUE, "Superior"), (7, "703", FALSE, "Superior");
 INSERT INTO Servicios (Nombre, Costo, HotelID) VALUES ("WiFi", 10.00,1), ("Desayuno incluido", 25.00, 2);
 INSERT INTO Reservas (CedulaID, HabitacionID, FechaInicio, FechaFin) VALUES (1, 1, "2024-09-01", "2024-09-05"), (2, 3, "2024-10-10", "2024-10-15");
 

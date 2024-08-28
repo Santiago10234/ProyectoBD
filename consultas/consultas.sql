@@ -13,3 +13,18 @@ GROUP BY
 ORDER BY
     NumeroReservas DESC;
 
+
+
+SELECT
+    COUNT(*) AS HabitacionesDisponibles
+FROM 
+    Habitaciones ha                    
+LEFT JOIN
+    Reservas r ON ha.HabitacionID = r.HabitacionID 
+    AND (
+        (r.FechaInicio <= "2024-09-15" AND r.FechaFin >= "2024-9-28")
+    )
+WHERE
+    ha.HotelID = 6
+    AND ha.Disponibilidad = TRUE
+    AND r.ReservaID IS NULL;
