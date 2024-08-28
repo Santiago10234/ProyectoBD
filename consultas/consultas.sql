@@ -28,3 +28,14 @@ WHERE
     ha.HotelID = 6
     AND ha.Disponibilidad = TRUE
     AND r.ReservaID IS NULL;
+
+
+SELECT
+    HotelID,
+    Nombre,
+    Ubicacion,
+    Clasificacion
+FROM
+    Hoteles 
+WHERE
+    Nombre LIKE "%hotel%"
