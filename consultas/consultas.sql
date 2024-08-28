@@ -50,3 +50,14 @@ FROM
     Hoteles 
 WHERE
     Ubicacion LIKE "Puerto%"
+
+
+SELECT
+    HotelID,
+    Nombre,
+    Ubicacion,
+    Clasificacion
+FROM
+    Hoteles
+WHERE
+    Ubicacion LIKE "%n"
