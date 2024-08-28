@@ -25,7 +25,7 @@ LEFT JOIN
         (r.FechaInicio <= "2024-09-15" AND r.FechaFin >= "2024-9-28")
     )
 WHERE
-    ha.HotelID = 6
+    ha.HotelID = 1
     AND ha.Disponibilidad = TRUE
     AND r.ReservaID IS NULL;
 
@@ -39,3 +39,14 @@ FROM
     Hoteles 
 WHERE
     Nombre LIKE "%hotel%"
+
+
+SELECT
+    HotelID,
+    Nombre,
+    Ubicacion,
+    Clasificacion
+FROM
+    Hoteles 
+WHERE
+    Ubicacion LIKE "Puerto%"
