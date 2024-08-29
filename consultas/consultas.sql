@@ -146,3 +146,31 @@ FROM
 ORDER BY 
     OcupacionPromedio DESC
 LIMIT 1;
+
+
+SELECT
+    h.HotelID,
+    ho.Nombre AS NombreHotel,
+    ho.Ubicacion,
+    h.NumeroHabitacion,
+    h.Clasificacion
+FROM
+    Habitaciones h 
+JOIN
+    Hoteles ho ON h.HotelID = ho.HotelID 
+LEFT JOIN 
+    Reservas r ON h.HabitacionID = r.HabitacionID 
+    AND r.FechaInicio <= CURDATE()
+    AND r.FechaFin >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+WHERE
+    h.Disponibilidad = TRUE
+    AND r.ReservaID IS NULL
+GROUP BY
+    h.HotelID,
+    ho.Nombre,
+    ho.Ubicacion,
+    h.NumeroHabitacion,
+    h.Clasificacion
+HAVING
+    COUNT(r.ReservaID) = 0;
+
