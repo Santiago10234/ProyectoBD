@@ -14,7 +14,6 @@ ORDER BY
     NumeroReservas DESC;
 
 
-
 SELECT
     COUNT(*) AS HabitacionesDisponibles
 FROM 
@@ -61,3 +60,28 @@ FROM
     Hoteles
 WHERE
     Ubicacion LIKE "%n"
+
+
+SELECT 
+    u.Nombre AS NombreCliente,
+    u.Apellidos AS ApellidosCliente,
+    r.ReservaID,
+    r.FechaInicio,
+    r.FechaFin,
+    h.NumeroHabitacion,
+    ho.Nombre AS NombreHotel,
+    ho.Ubicacion
+FROM 
+    Usuarios u
+JOIN 
+    Reservas r ON u.CedulaID = r.CedulaID
+JOIN 
+    Habitaciones h ON r.HabitacionID = h.HabitacionID
+JOIN 
+    Hoteles ho ON h.HotelID = ho.HotelID
+WHERE 
+    u.Correo = "carlos@gmail.com"
+    AND r.FechaInicio BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()
+ORDER BY 
+    r.FechaInicio;
+    
