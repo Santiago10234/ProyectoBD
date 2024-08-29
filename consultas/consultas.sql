@@ -101,4 +101,48 @@ WHERE
    ho.HotelID = 1
 GROUP BY 
     ho.HotelID, ho.Nombre;
- 
+
+
+WITH ReservasMesAnterior AS (
+    SELECT 
+        h.HotelID,
+        COUNT(DISTINCT r.ReservaID) AS TotalReservas,
+        SUM(DATEDIFF(
+            LEAST(CURDATE(), r.FechaFin), 
+            GREATEST(r.FechaInicio, DATE_SUB(CURDATE(), INTERVAL 1 MONTH)) + 1
+        )) AS DiasOcupados
+    FROM 
+        Reservas r
+    JOIN 
+        Habitaciones h ON r.HabitacionID = h.HabitacionID
+    WHERE 
+        r.FechaInicio < CURDATE() 
+        AND r.FechaFin >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+    GROUP BY 
+        h.HotelID
+),
+DatosHotel AS (
+    SELECT 
+        ho.HotelID,
+        ho.Nombre,
+        COALESCE(SUM(rm.DiasOcupados), 0) AS DiasOcupados,
+        CASE 
+            WHEN COUNT(DISTINCT rm.HotelID) = 0 THEN 0
+            ELSE SUM(rm.DiasOcupados) / DATEDIFF(LAST_DAY(DATE_SUB(CURDATE(), INTERVAL 1 MONTH)), DATE_SUB(CURDATE(), INTERVAL 1 MONTH)) + 1
+        END AS OcupacionPromedio
+    FROM 
+        ReservasMesAnterior rm
+    JOIN 
+        Hoteles ho ON rm.HotelID = ho.HotelID
+    GROUP BY 
+        ho.HotelID, ho.Nombre
+)
+SELECT 
+    Nombre AS NombreHotel,
+    DiasOcupados,
+    OcupacionPromedio
+FROM 
+    DatosHotel
+ORDER BY 
+    OcupacionPromedio DESC
+LIMIT 1;
