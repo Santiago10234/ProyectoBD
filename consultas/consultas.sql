@@ -84,4 +84,21 @@ WHERE
     AND r.FechaInicio BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()
 ORDER BY 
     r.FechaInicio;
-    
+
+
+SELECT
+    ho.nombre AS NombreHotel,
+    COUNT(r.reservaID) AS TotalReservas,
+    DATEDIFF(MAX(r.FechaFin),MIN(r.FechaInicio)) + 1 AS NumeroDias,
+    COUNT(r.ReservaID)/ (DATEDIFF(MAX(r.FechaFin),MIN(r.FechaInicio))+1) AS PromedioReservasDiarias
+FROM 
+   Reservas r
+JOIN 
+   Habitaciones h ON r.HabitacionID = h.HabitacionID
+JOIN
+   Hoteles ho ON h.HotelID = ho.HotelID
+WHERE 
+   ho.HotelID = 1
+GROUP BY 
+    ho.HotelID, ho.Nombre;
+ 
