@@ -1,4 +1,4 @@
-use Hoteles
+use Hoteles;
 -- Santiago
 CREATE TRIGGER ActualizarDisponibilidadReservaInsert
 AFTER INSERT ON Reservas

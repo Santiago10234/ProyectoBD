@@ -1,4 +1,4 @@
-use Hoteles
+use Hoteles;
 
 -- Santiago
 CREATE PROCEDURE AgregarReserva (
