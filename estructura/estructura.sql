@@ -8,7 +8,9 @@ CREATE TABLE Usuarios (
     Apellidos VARCHAR(100) NOT NULL,
     Correo VARCHAR(100) UNIQUE NOT NULL
 );
-
+ALTER TABLE Usuarios ADD COLUMN Tipo VARCHAR(20) NOT NULL;
+UPDATE Usuarios SET Tipo = 'usuario'; WHERE CedulaID = 1;
+UPDATE Usuarios SET Tipo = 'usuario'; WHERE CedulaID = 2;
 
 CREATE TABLE Administradores (
  AdministradorID INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,6 +38,8 @@ INSERT INTO Administradores (Nombre, Apellidos, Correo) VALUES
 INSERT INTO Usuarios (Nombre, Apellidos, Correo) VALUES
 ("Carlos", "Gomez", "carlos@gmail.com"),
 ("Laurita", "Gomez", "laura.m@gmail.com");
+INSERT INTO Usuarios (Nombre, Apellidos, Correo, Tipo) VALUES
+("Santiago", "Ariza", "Santiago@gmail.com", "administrador");
 
 ALTER TABLE Hoteles ADD COLUMN Ubicacion VARCHAR(100) NOT NULL 
 

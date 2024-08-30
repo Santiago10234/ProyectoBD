@@ -1,5 +1,5 @@
 use Hoteles
-
+-- Santiago
 SELECT h.HotelID, h.Nombre AS NombreHotel,
     COUNT(r.ReservaID) AS NumeroReservas
 FROM
@@ -13,7 +13,7 @@ GROUP BY
 ORDER BY
     NumeroReservas DESC;
 
-
+-- Kenneth
 SELECT
     COUNT(*) AS HabitacionesDisponibles
 FROM 
@@ -28,7 +28,7 @@ WHERE
     AND ha.Disponibilidad = TRUE
     AND r.ReservaID IS NULL;
 
-
+-- Kenneth
 SELECT
     HotelID,
     Nombre,
@@ -39,7 +39,7 @@ FROM
 WHERE
     Nombre LIKE "%hotel%"
 
-
+-- Kenneth
 SELECT
     HotelID,
     Nombre,
@@ -50,7 +50,7 @@ FROM
 WHERE
     Ubicacion LIKE "Puerto%"
 
-
+-- Kenneth
 SELECT
     HotelID,
     Nombre,
@@ -61,7 +61,7 @@ FROM
 WHERE
     Ubicacion LIKE "%n"
 
-
+-- Kenneth
 SELECT 
     u.Nombre AS NombreCliente,
     u.Apellidos AS ApellidosCliente,
@@ -85,7 +85,7 @@ WHERE
 ORDER BY 
     r.FechaInicio;
 
-
+-- Santiago
 SELECT
     ho.nombre AS NombreHotel,
     COUNT(r.reservaID) AS TotalReservas,
@@ -102,7 +102,7 @@ WHERE
 GROUP BY 
     ho.HotelID, ho.Nombre;
 
-
+-- Santiago
 WITH ReservasMesAnterior AS (
     SELECT 
         h.HotelID,
@@ -147,7 +147,7 @@ ORDER BY
     OcupacionPromedio DESC
 LIMIT 1;
 
-
+-- Santiago
 SELECT
     h.HotelID,
     ho.Nombre AS NombreHotel,

@@ -1,6 +1,6 @@
 use Hoteles
 
-
+-- Santiago
 CREATE PROCEDURE AgregarReserva (
     IN p_CedulaID INT, 
     IN p_HabitacionID INT, 
@@ -29,7 +29,7 @@ CALL AgregarReserva(1, 1, "2024-8-27", "2024-8-31");
 CALL AgregarReserva(1, 2, "2024-8-28", "2024-8-31");
 
 CREATE PROCEDURE ConsultarDisponibilidad(
-
+-- Kenneth
 IN p_HotelID INT,
 IN p_FechaInicio DATE,
 IN p_FechaFin DATE

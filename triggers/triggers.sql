@@ -1,5 +1,5 @@
 use Hoteles
-
+-- Santiago
 CREATE TRIGGER ActualizarDisponibilidadReservaInsert
 AFTER INSERT ON Reservas
 FOR EACH ROW
@@ -11,7 +11,7 @@ BEGIN
         (FechaInicio <= NEW.FechaFin AND FechaFin >= NEW.FechaInicio)
     );
 END;
-
+-- Kenneth
 CREATE TRIGGER ActualizarDisponibilidadReservaDelete
 AFTER DELETE ON Reservas
 FOR EACH ROW
