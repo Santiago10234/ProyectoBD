@@ -32,7 +32,7 @@ create TABLE Servicios (ServicioID INT PRIMARY KEY AUTO_INCREMENT, Nombre VARCHA
 create TABLE Reservas (ReservaID INT PRIMARY KEY AUTO_INCREMENT, CedulaID INT, HabitacionID INT, FechaInicio DATE NOT NULL, FechaFin DATE NOT NULL, FOREIGN KEY (CedulaID) REFERENCES Usuarios(CedulaID), FOREIGN KEY (HabitacionID) REFERENCES Habitaciones(HabitacionID));
 INSERT INTO Administradores (Nombre, Apellidos, Correo) VALUES
 ("Juan", "Perez", "juan@gmail.com"),
-("Anita", "Biliber", "anitab@gmail.com"); 
+("Anita", "Biliber", "anitab@gmail.com");   
 INSERT INTO Usuarios (Nombre, Apellidos, Correo) VALUES
 ("Carlos", "Gomez", "carlos@gmail.com"),
 ("Laurita", "Gomez", "laura.m@gmail.com");
